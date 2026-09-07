@@ -109,10 +109,10 @@ export async function generateQuotePdf(data: QuotePdfData): Promise<Uint8Array> 
     data.business.email,
   ].filter(Boolean) as string[];
 
-  const rightMeta = [
-    [data.quote.quote_number, ""],
-    [`Date: ${formatDate(data.quote.created_at)}`, ""],
-    [`Valid until: ${formatDate(data.quote.valid_until)}`, ""],
+   const rightMeta = [
+    data.quote.quote_number,
+    `Date: ${formatDate(data.quote.created_at)}`,
+    `Valid until: ${formatDate(data.quote.valid_until)}`,
   ];
 
   const blockTop = y;
@@ -123,12 +123,12 @@ export async function generateQuotePdf(data: QuotePdfData): Promise<Uint8Array> 
   const afterBusiness = y;
 
   y = blockTop;
-  for (const [line] of rightMeta) {
+  
     text(line, PAGE_WIDTH - MARGIN, { size: 9.5, color: MUTED, align: "right" });
     y -= 13;
   }
   const afterMeta = y;
-
+  for (const line of rightMeta) {
   y = Math.min(afterBusiness, afterMeta) - 10;
   hline();
   y -= 24;
