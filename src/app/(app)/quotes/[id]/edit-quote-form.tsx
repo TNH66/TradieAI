@@ -1,9 +1,9 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { updateQuote, type QuoteFormState } from "../../actions";
-import { QuoteForm } from "../../quote-form";
-import type { Quote, QuoteItem } from "../../types";
+import { updateQuote, type QuoteFormState } from "../actions";
+import { QuoteForm } from "../quote-form";
+import type { Quote, QuoteItem } from "../types";
 
 const initialState: QuoteFormState = {};
 
