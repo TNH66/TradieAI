@@ -53,11 +53,11 @@ export function AiQuoteInput({ onGenerated }: { onGenerated: (quote: GeneratedQu
     recognition.interimResults = false;
     recognition.lang = "en-AU";
 
-    recognition.onresult = (event) => {
+        recognition.onresult = (event) => {
       let finalTranscript = "";
       for (let i = 0; i < event.results.length; i++) {
         const result = event.results[i];
-        if (result.isFinal) {
+        if (result && result.isFinal && result[0]) {
           finalTranscript += result[0].transcript;
         }
       }
