@@ -106,6 +106,6 @@ export function validateGeneratedQuote(raw: unknown): ValidationResult {
 export function extractJsonFromText(text: string): unknown {
   const trimmed = text.trim();
   const fenced = trimmed.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-  const jsonText = fenced ? fenced[1] : trimmed;
+    const jsonText = fenced && fenced[1] ? fenced[1] : trimmed;
   return JSON.parse(jsonText);
 }
